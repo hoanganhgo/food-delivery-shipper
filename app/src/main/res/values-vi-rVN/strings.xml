@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="order">Đơn hàng</string>
+    <string name="income">Thu nhập</string>
+    <string name="message">Tin nhắn</string>
+    <string name="profile">Cá nhân</string>
+</resources>
