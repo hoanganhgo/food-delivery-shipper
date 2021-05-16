@@ -11,14 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.hcmus.fit.shipper.R;
 
-public class BillFragment extends Fragment {
+public class MessageFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_bill, container, false);
-        final TextView textView = root.findViewById(R.id.text_bill);
-        textView.setText("Bill");
+        View root = inflater.inflate(R.layout.fragment_message, container, false);
 
         return root;
     }

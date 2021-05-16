@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_01"
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:background="@color/grey">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_object_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rau Má Siêu Cay Khổng Lồ"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_bold"/>
+            <TextView
+                android:id="@+id/tv_object_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="125, Lý Thường Kiệt, Quận 10"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_bold"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_gg_map"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_gg_map"
+            android:background="@color/transparent"
+            android:scaleType="center"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_02"
+        android:layout_below="@+id/rl_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:background="@color/grey">
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay: $10"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white_dark"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_time_get_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get Now"
+                android:textSize="13sp"
+                android:textColor="@color/red"
+                android:fontFamily="@font/roboto_regular"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_03"
+        android:layout_below="@+id/ln_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_detail"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number: 2"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <View
+            android:layout_width="380dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/grey_light"
+            android:layout_marginVertical="10dp"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="2">
+            <TableRow>
+                <TextView
+                    android:layout_width="200dp"
+                    android:text="@string/dish_name"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_bold"
+                    android:paddingVertical="3dip" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:text="@string/number"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textAlignment="center"
+                    android:padding="3dip" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="@string/money"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textAlignment="center"
+                    android:padding="3dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="200dp"
+                    android:text="Rau má siêu cay khổng lồ"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingVertical="3dip" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:text="2"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textAlignment="center"
+                    android:padding="3dip" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="500.000"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textAlignment="center"
+                    android:padding="3dip" />
+            </TableRow>
+        </TableLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.000.000"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_04"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="0.25"
+            android:text="@string/phone"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bg_btn_grey"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/ic_phone"/>
+        <Button
+            android:id="@+id/btn_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="0.25"
+            android:text="@string/chat"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bg_btn_grey"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/ic_message_circle"/>
+        <Button
+            android:id="@+id/btn_arrived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="0.25"
+            android:text="@string/arrived"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bg_btn_grey"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/ic_log_in"/>
+        <Button
+            android:id="@+id/btn_refuse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="0.25"
+            android:text="@string/refuse"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bg_btn_grey"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/ic_cancel"/>
+    </LinearLayout>
+</RelativeLayout>

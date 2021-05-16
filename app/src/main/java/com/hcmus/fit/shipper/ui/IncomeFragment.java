@@ -11,14 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.hcmus.fit.shipper.R;
 
-public class NotificationsFragment extends Fragment {
+public class IncomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        textView.setText("Notifications");
+        View root = inflater.inflate(R.layout.fragment_income, container, false);
+
 
         return root;
     }

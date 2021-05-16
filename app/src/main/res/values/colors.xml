@@ -3,8 +3,10 @@
     <color name="blue">#0075E1</color>
     <color name="blue_dark">#FF005DB3</color>
     <color name="green">#FF008000</color>
+    <color name="green_transparent">#31008000</color>
     <color name="green_light">#FF0BF24B</color>
     <color name="red">#FFFF0000</color>
+    <color name="red_light">#2DFF0000</color>
     <color name="red_dark">#FFDE0000</color>
     <color name="sky">#FF0BC9F2</color>
     <color name="orange">#FFE16C00</color>
@@ -13,4 +15,6 @@
     <color name="black">#FF000000</color>
     <color name="black_light">#36000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_dark">#A5A5A5</color>
+    <color name="transparent">#00000000</color>
 </resources>

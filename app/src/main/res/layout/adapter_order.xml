@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ln_order_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="@color/grey">
+        <TextView
+            android:id="@+id/tv_order_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234567"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp">
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50K"
+                android:textSize="18sp"
+                android:textColor="@color/green_light"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/tv_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 point"
+                android:textSize="16sp"
+                android:textColor="@color/sky"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_order_2"
+        android:layout_below="@+id/ln_order_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="5dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp">
+            <ImageView
+                android:id="@+id/iv_start01"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@color/red"
+                android:layout_margin="5dp"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/tv_merchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get: Đậu xanh rau má"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_toEndOf="@id/iv_start01" />
+            <TextView
+                android:id="@+id/tv_pay_merchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay: 10K"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_black"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@color/red_light"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_time_get_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get Now"
+                android:textSize="13sp"
+                android:textColor="@color/red"
+                android:fontFamily="@font/roboto_medium"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_order_3"
+        android:layout_below="@id/ln_order_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_transparent"
+        android:paddingHorizontal="5dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp">
+            <ImageView
+                android:id="@+id/iv_start02"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@color/green"
+                android:layout_margin="5dp"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/tv_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ship: Lưu Đức Hoa"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_toEndOf="@id/iv_start02" />
+            <TextView
+                android:id="@+id/tv_receive_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Receive: 100K"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_black"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/green_transparent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_time_ship"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ship Now"
+                    android:textSize="13sp"
+                    android:textColor="@color/green"
+                    android:fontFamily="@font/roboto_medium"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/grey_light"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15 km"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_order_4"
+        android:layout_below="@id/ln_order_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Schedule ship: "
+            android:textSize="14sp"
+            android:textColor="@color/green"
+            android:fontFamily="@font/roboto_regular"/>
+        <TextView
+            android:id="@+id/tv_order_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10:30 11/05/2021"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_order_detail"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:background="@drawable/bg_btn_transparent"/>
+
+</RelativeLayout>
