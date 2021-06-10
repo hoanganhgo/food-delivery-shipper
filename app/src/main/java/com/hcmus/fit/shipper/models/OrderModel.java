@@ -1,39 +1,44 @@
 package com.hcmus.fit.shipper.models;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class OrderModel {
-    private String orderCode;
-    private int price;
+    private String orderId;
+    private int subTotal;
+    private int shipFee;
+    private int total;
     private int point;
 
     private String merchant;
-    private int merchantPay;
     private int merchantTime;
+    private Address merchantAddress;
+    private String merchantPhone;
 
     private String customer;
-    private int customerFee;
     private int customerTime;
-    private int distance;
+    private Address customerAddress;
+    private String customerPhone;
 
+    private ArrayList<DishOrder> dishOrderList = new ArrayList<>();
+
+    private double distance;
     private long completeAt;
+    private int status = 0;
 
     public OrderModel() {
 
     }
 
-    public String getOrderCode() {
-        return orderCode;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public int getPoint() {
@@ -52,14 +57,6 @@ public class OrderModel {
         this.merchant = merchant;
     }
 
-    public int getMerchantPay() {
-        return merchantPay;
-    }
-
-    public void setMerchantPay(int merchantPay) {
-        this.merchantPay = merchantPay;
-    }
-
     public int getMerchantTime() {
         return merchantTime;
     }
@@ -76,14 +73,6 @@ public class OrderModel {
         this.customer = customer;
     }
 
-    public int getCustomerFee() {
-        return customerFee;
-    }
-
-    public void setCustomerFee(int customerFee) {
-        this.customerFee = customerFee;
-    }
-
     public int getCustomerTime() {
         return customerTime;
     }
@@ -92,11 +81,11 @@ public class OrderModel {
         this.customerTime = customerTime;
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 
@@ -106,5 +95,89 @@ public class OrderModel {
 
     public void setCompleteAt(long completeAt) {
         this.completeAt = completeAt;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Address getMerchantAddress() {
+        return merchantAddress;
+    }
+
+    public void setMerchantAddress(Address merchantAddress) {
+        this.merchantAddress = merchantAddress;
+    }
+
+    public Address getCustomerAddress() {
+        return customerAddress;
+    }
+
+    public void setCustomerAddress(Address customerAddress) {
+        this.customerAddress = customerAddress;
+    }
+
+    public int getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(int subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public int getShipFee() {
+        return shipFee;
+    }
+
+    public void setShipFee(int shipFee) {
+        this.shipFee = shipFee;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public String getMerchantPhone() {
+        return merchantPhone;
+    }
+
+    public void setMerchantPhone(String merchantPhone) {
+        this.merchantPhone = merchantPhone;
+    }
+
+    public String getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public ArrayList<DishOrder> getDishOrderList() {
+        return dishOrderList;
+    }
+
+    public void createDishOrderList(JSONArray foodArray) throws JSONException {
+        for (int i = 0; i < foodArray.length(); i++) {
+            JSONObject foodJson = foodArray.getJSONObject(i);
+
+            DishModel dishModel = new DishModel();
+            dishModel.setId(foodJson.getString("id"));
+            dishModel.setPrice(foodJson.getInt("Price"));
+            dishModel.setName(foodJson.getString("Name"));
+            dishModel.setOptions(foodJson.getString("Options"));
+
+            DishOrder dishOrder = new DishOrder(dishModel, foodJson.getInt("Quantity"));
+
+            this.dishOrderList.add(dishOrder);
+        }
     }
 }

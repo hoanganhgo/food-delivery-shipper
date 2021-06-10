@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.models.OrderModel;
+import com.hcmus.fit.shipper.util.AppUtil;
 
 import java.util.List;
 
@@ -62,24 +63,24 @@ public class OrderAdapter extends BaseAdapter {
             holder = (MyViewHolder) convertView.getTag();
         }
 
-//        OrderModel orderModel = orderModelList.get(position);
-//
-//        holder.tvOrderCode.setText(orderModel.getOrderCode());
-//        holder.tvPrice.setText(orderModel.getPrice());
-//        holder.tvPoint.setText(orderModel.getPoint() + convertView.getResources().getString(R.string.point));
-//        holder.tvMerchant.setText(convertView.getResources().getString(R.string.get_order)
-//                + orderModel.getMerchant());
-//        holder.tvPayMerchant.setText(convertView.getResources().getString(R.string.pay_money)
-//                + orderModel.getMerchantPay());
-//        holder.tvTimeGetOrder.setText(convertView.getResources().getString(R.string.get_now));
-//        holder.tvCustomer.setText(convertView.getResources().getString(R.string.ship_order)
-//                + orderModel.getCustomer());
-//        holder.tvReceiveCustomer.setText(convertView.getResources().getString(R.string.receive_money)
-//                + orderModel.getCustomerFee());
-//        holder.tvTimeShip.setText(convertView.getResources().getString(R.string.ship_now));
-//        holder.tvDistance.setText(orderModel.getDistance() + "km");
-//        holder.tvCompleteAt.setText(convertView.getResources().getString(R.string.schedule_ship)
-//                + orderModel.getCompleteAt());
+        OrderModel orderModel = orderModelList.get(position);
+
+        holder.tvOrderCode.setText("#" + orderModel.getOrderId());
+        holder.tvPrice.setText(AppUtil.convertCurrency(orderModel.getTotal()));
+        holder.tvPoint.setText(orderModel.getPoint() + convertView.getResources().getString(R.string.point));
+        holder.tvMerchant.setText(convertView.getResources().getString(R.string.get_order)
+                + orderModel.getMerchant());
+        holder.tvPayMerchant.setText(convertView.getResources().getString(R.string.pay_money)
+                + AppUtil.roundCurrency(orderModel.getSubTotal()));
+        holder.tvTimeGetOrder.setText(convertView.getResources().getString(R.string.get_now));
+        holder.tvCustomer.setText(convertView.getResources().getString(R.string.ship_order)
+                + orderModel.getCustomer());
+        holder.tvReceiveCustomer.setText(convertView.getResources().getString(R.string.receive_money)
+                + AppUtil.roundCurrency(orderModel.getTotal()));
+        holder.tvTimeShip.setText(convertView.getResources().getString(R.string.ship_now));
+        holder.tvDistance.setText(orderModel.getDistance() + " km");
+        holder.tvCompleteAt.setText(convertView.getResources().getString(R.string.schedule_ship)
+                + orderModel.getCompleteAt());
 
         return convertView;
     }

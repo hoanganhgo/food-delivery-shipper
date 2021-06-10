@@ -65,13 +65,16 @@
                 android:layout_alignParentStart="true"/>
             <TextView
                 android:id="@+id/tv_merchant"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Get: Đậu xanh rau má"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"
-                android:layout_toEndOf="@id/iv_start01" />
+                android:layout_toEndOf="@id/iv_start01"
+                android:layout_toStartOf="@+id/tv_pay_merchant"
+                android:layout_marginEnd="5dp"
+                android:maxLines="2"/>
             <TextView
                 android:id="@+id/tv_pay_merchant"
                 android:layout_width="wrap_content"
@@ -122,13 +125,16 @@
                 android:layout_alignParentStart="true"/>
             <TextView
                 android:id="@+id/tv_customer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ship: Lưu Đức Hoa"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"
-                android:layout_toEndOf="@id/iv_start02" />
+                android:layout_toEndOf="@id/iv_start02"
+                android:layout_toStartOf="@id/tv_receive_customer"
+                android:layout_marginEnd="5dp"
+                android:maxLines="2"/>
             <TextView
                 android:id="@+id/tv_receive_customer"
                 android:layout_width="wrap_content"
@@ -204,11 +210,5 @@
             android:textColor="@color/black"
             android:fontFamily="@font/roboto_regular"/>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_order_detail"
-        android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:background="@drawable/bg_btn_transparent"/>
 
 </RelativeLayout>

@@ -34,4 +34,11 @@
     <string name="refuse">Từ chối</string>
     <string name="ordered">Đã lấy hàng</string>
     <string name="delivered">Đã giao xong</string>
+    <string name="recieve">Nhận đơn</string>
+    <string name="login">Đăng nhập</string>
+    <string name="enter_phone">Nhập số điện thoại</string>
+    <string name="confirm_otp">Xác nhận OTP</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="notify_phone_number">Số điện thoại phải có 10 ký tự</string>
+    <string name="options">Tuỳ chọn thêm</string>
 </resources>

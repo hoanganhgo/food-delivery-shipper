@@ -11,7 +11,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.fragments.MapsActivity;
-import com.hcmus.fit.shipper.fragments.OrderHolderFragment;
+import com.hcmus.fit.shipper.fragments.OrderFragment;
+
+import java.util.ArrayList;
 
 
 /**
@@ -20,9 +22,7 @@ import com.hcmus.fit.shipper.fragments.OrderHolderFragment;
  */
 public class OrderPagerAdapter extends FragmentPagerAdapter {
 
-    @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.free_pick, R.string.process,
-            R.string.complete};
+    private final ArrayList<OrderFragment> orderFragmentList = new ArrayList<>();
     private final MapsActivity map = new MapsActivity();
     private final Context mContext;
 
@@ -30,6 +30,12 @@ public class OrderPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         Log.d("order", "SectionsPagerAdapter");
         mContext = context;
+
+        OrderFragment orderFragment1 = new OrderFragment(R.string.process);
+        orderFragmentList.add(orderFragment1);
+
+        OrderFragment orderFragment2 = new OrderFragment(R.string.complete);
+        orderFragmentList.add(orderFragment2);
     }
 
     @Override
@@ -41,14 +47,18 @@ public class OrderPagerAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return map;
         } else {
-            return OrderHolderFragment.newInstance(position);
+            return this.orderFragmentList.get(position - 1);
         }
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        if (position == 0) {
+            return mContext.getResources().getString(R.string.free_pick);
+        } else {
+            return mContext.getResources().getString(this.orderFragmentList.get(position - 1).getTitle());
+        }
     }
 
     @Override

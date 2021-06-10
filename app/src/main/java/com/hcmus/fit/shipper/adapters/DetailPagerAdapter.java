@@ -10,9 +10,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.hcmus.fit.shipper.R;
-import com.hcmus.fit.shipper.fragments.DetailHolderFragment;
-import com.hcmus.fit.shipper.fragments.MapsActivity;
-import com.hcmus.fit.shipper.fragments.OrderHolderFragment;
+import com.hcmus.fit.shipper.fragments.DetailOrderFragment;
+import com.hcmus.fit.shipper.models.OrderModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -21,14 +23,18 @@ import com.hcmus.fit.shipper.fragments.OrderHolderFragment;
  */
 public class DetailPagerAdapter extends FragmentPagerAdapter {
 
-    @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.merchant, R.string.customer};
+    private final List<DetailOrderFragment> detailOrderList = new ArrayList<>();
     private final Context mContext;
 
-    public DetailPagerAdapter(Context context, FragmentManager fm) {
+    public DetailPagerAdapter(Context context, FragmentManager fm, OrderModel orderModel) {
         super(fm);
         Log.d("order detail", "DetailPagerAdapter");
         mContext = context;
+
+        DetailOrderFragment merchant = new DetailOrderFragment(R.string.merchant, orderModel);
+        DetailOrderFragment customer = new DetailOrderFragment(R.string.customer, orderModel);
+        detailOrderList.add(merchant);
+        detailOrderList.add(customer);
     }
 
     @Override
@@ -36,19 +42,19 @@ public class DetailPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
 
-        return DetailHolderFragment.newInstance(position);
+        return this.detailOrderList.get(position);
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        return mContext.getResources().getString(detailOrderList.get(position).getTitle());
     }
 
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return TAB_TITLES.length;
+        return this.detailOrderList.size();
     }
 
 
