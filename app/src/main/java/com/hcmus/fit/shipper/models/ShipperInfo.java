@@ -12,6 +12,7 @@ public class ShipperInfo {
     private String token = "";
     private double latitude;
     private double longitude;
+    private boolean active = false;
 
     private ShipperInfo() {
 
@@ -94,6 +95,14 @@ public class ShipperInfo {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public void clear() {

@@ -31,11 +31,11 @@
 
         <ImageButton
             android:id="@+id/btn_power"
-            android:layout_width="0dp"
+            android:layout_width="36dp"
             android:layout_height="match_parent"
             android:layout_weight="0.1"
-            android:src="@drawable/ic_power"
-            android:background="@color/red"/>
+            android:background="@color/green_light"
+            android:src="@drawable/ic_power" />
     </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager

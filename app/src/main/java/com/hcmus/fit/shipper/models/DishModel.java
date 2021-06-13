@@ -1,18 +1,10 @@
 package com.hcmus.fit.shipper.models;
 
-import android.graphics.Bitmap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class DishModel {
     private String id;
     private String name;
     private String options;
+    private int optionPrice;
     private int price;
 
     public DishModel() {
@@ -55,5 +47,13 @@ public class DishModel {
 
     public void setOptions(String options) {
         this.options = options;
+    }
+
+    public int getOptionPrice() {
+        return optionPrice;
+    }
+
+    public void setOptionPrice(int optionPrice) {
+        this.optionPrice = optionPrice;
     }
 }

@@ -65,15 +65,58 @@
             android:textColor="@color/grey"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_option_label"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ln_option"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/options"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_regular"
-        android:layout_marginStart="20dp"
-        android:textColor="@color/black"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/options"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tv_option_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="x"
+            android:layout_marginHorizontal="3dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/grey"/>
+        <TextView
+            android:id="@+id/tv_option_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="="
+            android:layout_marginHorizontal="3dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/grey"/>
+        <TextView
+            android:id="@+id/tv_option_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/grey"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_options"

@@ -26,6 +26,7 @@ import com.hcmus.fit.shipper.models.OrderManager;
 import com.hcmus.fit.shipper.models.ShipperInfo;
 import com.hcmus.fit.shipper.network.MySocket;
 import com.hcmus.fit.shipper.network.SignInNetwork;
+import com.hcmus.fit.shipper.util.NotifyUtil;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             ShipperInfo.getInstance().setLatitude(location.getLatitude());
             ShipperInfo.getInstance().setLongitude(location.getLongitude());
         }
+
+        NotifyUtil.init(this);
     }
 
     private Dialog getOrderDialog() {
@@ -126,9 +129,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        //Log.d("location", "x: " + location.getLatitude() +", y: " + location.getLongitude());
         ShipperInfo.getInstance().setLatitude(location.getLatitude());
         ShipperInfo.getInstance().setLongitude(location.getLongitude());
+        MySocket.updateCoor(location.getLatitude(), location.getLongitude());
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -54,6 +55,9 @@ public class DetailOrderFragment extends Fragment {
         TextView tvObjectAddress = root.findViewById(R.id.tv_object_address);
         TextView tvPrice = root.findViewById(R.id.tv_price);
         LinearLayout lnOrder = root.findViewById(R.id.ln_order);
+        Button btnPhone = root.findViewById(R.id.btn_phone);
+        Button btnChat = root.findViewById(R.id.btn_chat);
+        Button btnRefuse = root.findViewById(R.id.btn_refuse);
 
         btnGGMap.setOnClickListener(v -> {
             // Create a Uri from an intent string. Use the result to create an Intent.
@@ -84,24 +88,37 @@ public class DetailOrderFragment extends Fragment {
             tvObjectAddress.setText(orderModel.getMerchantAddress().getFullAddress());
             tvPrice.setText(getResources().getString(R.string.pay_money)
                     + AppUtil.convertCurrency(orderModel.getSubTotal()));
-            //tvTotal.setText(AppUtil.convertCurrency(orderModel.getSubTotal()));
+
+            btnPhone.setOnClickListener(v -> {
+                Uri number = Uri.parse("tel:" + orderModel.getMerchantPhone());
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(callIntent);
+            });
         } else {
             tvObjectName.setText(orderModel.getCustomer());
             tvObjectAddress.setText(orderModel.getCustomerAddress().getFullAddress());
             tvPrice.setText(getResources().getString(R.string.get_order)
                     + AppUtil.convertCurrency(orderModel.getTotal()));
-            //tvTotal.setText(AppUtil.convertCurrency(orderModel.getTotal()));
+
+            btnPhone.setOnClickListener(v -> {
+                Uri number = Uri.parse("tel:" + orderModel.getCustomerPhone());
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(callIntent);
+            });
         }
 
         for (int i = 0; i < orderModel.getDishOrderList().size(); i++) {
-            //LayoutInflater inflaterDish = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.widget_dish, null);
             TextView tvDishName = row.findViewById(R.id.tv_dish_name);
             TextView tvQuantity = row.findViewById(R.id.tv_quantity);
             TextView tvPriceDish = row.findViewById(R.id.tv_dish_price);
             TextView tvTotalOrder = row.findViewById(R.id.tv_total);
-            TextView tvOptionLabel = row.findViewById(R.id.tv_option_label);
+            LinearLayout lnOption = row.findViewById(R.id.ln_option);
             TextView tvOptions = row.findViewById(R.id.tv_options);
+            TextView tvOptionQuantity = row.findViewById(R.id.tv_option_quantity);
+            TextView tvOptionPrice = row.findViewById(R.id.tv_option_price);
+            TextView tvOptionTotal = row.findViewById(R.id.tv_option_total);
+
 
             DishOrder dishOrder = orderModel.getDishOrderList().get(i);
             tvDishName.setText((i + 1) + ". " + dishOrder.dishModel.getName());
@@ -109,9 +126,12 @@ public class DetailOrderFragment extends Fragment {
             tvPriceDish.setText(AppUtil.convertCurrency(dishOrder.dishModel.getPrice()));
             tvTotalOrder.setText(AppUtil.convertCurrency(dishOrder.getTotalPrice()));
             tvOptions.setText(dishOrder.dishModel.getOptions());
+            tvOptionQuantity.setText( String.valueOf(dishOrder.num));
+            tvOptionPrice.setText(AppUtil.convertCurrency(dishOrder.dishModel.getOptionPrice()));
+            tvOptionTotal.setText(AppUtil.convertCurrency(dishOrder.dishModel.getOptionPrice() * dishOrder.num));
             if (dishOrder.dishModel.getOptions().isEmpty()) {
-                tvOptionLabel.setVisibility(View.GONE);
                 tvOptions.setVisibility(View.GONE);
+                lnOption.setVisibility(View.GONE);
             }
 
             lnOrder.addView(row);

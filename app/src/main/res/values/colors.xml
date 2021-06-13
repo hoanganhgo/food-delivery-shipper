@@ -11,6 +11,7 @@
     <color name="sky">#FF0BC9F2</color>
     <color name="orange">#FFE16C00</color>
     <color name="grey">#FF505050</color>
+    <color name="grey_bg">#E5E5E5</color>
     <color name="grey_light">#FF848484</color>
     <color name="black">#FF000000</color>
     <color name="black_22">#22000000</color>

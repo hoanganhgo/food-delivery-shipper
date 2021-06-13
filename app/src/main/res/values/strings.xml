@@ -34,11 +34,13 @@
     <string name="refuse">Refuse</string>
     <string name="ordered">Ordered</string>
     <string name="delivered">Delivered</string>
-    <string name="recieve">Recieve</string>
+    <string name="receive">Receive</string>
     <string name="login">Login</string>
     <string name="enter_phone">Enter your phone number</string>
     <string name="confirm_otp">Confirm OTP</string>
     <string name="confirm">Confirm</string>
     <string name="notify_phone_number">Phone number must be 10 characters</string>
-    <string name="options">Options</string>
+    <string name="options">Options:</string>
+    <string name="notification">Notification</string>
+    <string name="enter_message">Enter your message...</string>
 </resources>

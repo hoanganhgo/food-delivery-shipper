@@ -173,7 +173,8 @@ public class OrderModel {
             dishModel.setId(foodJson.getString("id"));
             dishModel.setPrice(foodJson.getInt("Price"));
             dishModel.setName(foodJson.getString("Name"));
-            dishModel.setOptions(foodJson.getString("Options"));
+            dishModel.setOptions(foodJson.getJSONObject("Options").getString("notes"));
+            dishModel.setOptionPrice(foodJson.getJSONObject("Options").getInt("totalPrice"));
 
             DishOrder dishOrder = new DishOrder(dishModel, foodJson.getInt("Quantity"));
 

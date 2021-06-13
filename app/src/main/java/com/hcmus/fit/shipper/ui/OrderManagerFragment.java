@@ -28,6 +28,8 @@ import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.adapters.OrderPagerAdapter;
 import com.hcmus.fit.shipper.models.OrderManager;
 import com.hcmus.fit.shipper.models.OrderModel;
+import com.hcmus.fit.shipper.models.ShipperInfo;
+import com.hcmus.fit.shipper.network.MySocket;
 
 public class OrderManagerFragment extends Fragment {
 
@@ -46,7 +48,15 @@ public class OrderManagerFragment extends Fragment {
         tabs.setupWithViewPager(viewPager);
 
         btnPower.setOnClickListener(v -> {
-
+            if (ShipperInfo.getInstance().isActive()) {
+                ShipperInfo.getInstance().setActive(false);
+                MySocket.disconnect();
+                btnPower.setBackgroundColor(getResources().getColor(R.color.green_light));
+            } else {
+                ShipperInfo.getInstance().setActive(true);
+                MySocket.connect();
+                btnPower.setBackgroundColor(getResources().getColor(R.color.red));
+            }
         });
 
         return root;

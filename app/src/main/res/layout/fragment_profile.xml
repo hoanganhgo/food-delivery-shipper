@@ -83,6 +83,18 @@
             android:drawableStart="@drawable/ic_support"
             android:drawablePadding="5dp"/>
         <Button
+            android:id="@+id/btn_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notification"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_regular"
+            android:background="@color/white"
+            android:textAlignment="textStart"
+            android:drawableStart="@drawable/ic_bell"
+            android:drawablePadding="3dp"/>
+        <Button
             android:id="@+id/btn_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

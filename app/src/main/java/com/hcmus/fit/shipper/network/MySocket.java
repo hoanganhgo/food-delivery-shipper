@@ -5,10 +5,13 @@ import android.util.Log;
 import com.hcmus.fit.shipper.constant.API;
 import com.hcmus.fit.shipper.constant.EventConstant;
 import com.hcmus.fit.shipper.models.Address;
+import com.hcmus.fit.shipper.models.NotifyManager;
+import com.hcmus.fit.shipper.models.NotifyModel;
 import com.hcmus.fit.shipper.models.OrderManager;
 import com.hcmus.fit.shipper.models.OrderModel;
 import com.hcmus.fit.shipper.models.ShipperInfo;
 import com.hcmus.fit.shipper.util.JsonUtil;
+import com.hcmus.fit.shipper.util.NotifyUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,16 +33,26 @@ public class MySocket {
             try {
                 instance = IO.socket(API.SERVER_SOCKET);
 //                instance = IO.socket("https://87e83c19d91f.ngrok.io");
-                instance.on(CONNECT, onAuthenticate);
-                instance.on(RESPONSE_CHANGE_STATUS_ROOM, statusRoom);
-                instance.on(RESPONSE_SHIPPER_CONFIRM_ORDER, receiveOrder);
-                instance.connect();
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
         }
 
         return instance;
+    }
+
+    public static void disconnect() {
+        Log.d("socket", "disconnect...");
+        instance.disconnect();
+    }
+
+    public static void connect() {
+        Log.d("socket", "connect...");
+        instance.on(CONNECT, onAuthenticate);
+        instance.on(RESPONSE_CHANGE_STATUS_ROOM, statusRoom);
+        instance.on(RESPONSE_SHIPPER_CONFIRM_ORDER, receiveOrder);
+        instance.on(RESPONSE_NOTIFICATION, listenNotification);
+        instance.connect();
     }
 
     private static final Emitter.Listener onAuthenticate = args -> {
@@ -144,4 +157,56 @@ public class MySocket {
             e.printStackTrace();
         }
     }
+
+    public static void updateCoor(double latitude, double longitude) {
+        JSONObject json = new JSONObject();
+        Log.d("socket", "Update location --->>");
+        try {
+            JSONObject coorJson = new JSONObject();
+            coorJson.put("lat", latitude);
+            coorJson.put("lng", longitude);
+            json.put("coor", coorJson);
+            instance.emit(REQUEST_SHIPPER_CHANGE_COOR, json);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static final Emitter.Listener listenNotification = args -> {
+        JSONObject json = (JSONObject) args[0];
+        Log.d("socket-notification", json.toString());
+
+        try {
+            JSONObject data = json.getJSONObject("data");
+            String id = data.getString("_id");
+            String title = data.getString("Title");
+            String content = data.getString("Subtitle");
+            String avatar = data.getString("Thumbnail");
+
+            NotifyModel notifyModel = new NotifyModel(id, title, content, avatar);
+            NotifyManager.getInstance().addNotifyModel(notifyModel);
+
+            NotifyUtil.call(title, content);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    };
+
+    public static void sendMessage(String orderId) {
+        JSONObject json = new JSONObject();
+        Log.d("socket-send_chat", ">> Send message >>");
+        try {
+            json.put("orderID", orderId);
+            instance.emit(REQUEST_CHAT, json);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static final Emitter.Listener listenChat = args -> {
+        JSONObject json = (JSONObject) args[0];
+        Log.d("socket-receive-chat", json.toString());
+
+    };
+
 }
