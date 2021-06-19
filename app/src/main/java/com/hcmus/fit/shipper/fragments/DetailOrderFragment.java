@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.hcmus.fit.shipper.R;
+import com.hcmus.fit.shipper.activities.ChatActivity;
 import com.hcmus.fit.shipper.models.Address;
 import com.hcmus.fit.shipper.models.DishOrder;
 import com.hcmus.fit.shipper.models.OrderManager;
@@ -57,7 +58,6 @@ public class DetailOrderFragment extends Fragment {
         LinearLayout lnOrder = root.findViewById(R.id.ln_order);
         Button btnPhone = root.findViewById(R.id.btn_phone);
         Button btnChat = root.findViewById(R.id.btn_chat);
-        Button btnRefuse = root.findViewById(R.id.btn_refuse);
 
         btnGGMap.setOnClickListener(v -> {
             // Create a Uri from an intent string. Use the result to create an Intent.
@@ -83,28 +83,48 @@ public class DetailOrderFragment extends Fragment {
             startActivity(mapIntent);
         });
 
+        btnChat.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ChatActivity.class);
+            intent.putExtra("customerId", orderModel.getCustomerId());
+            startActivity(intent);
+        });
+
         if (this.title == R.string.merchant) {
             tvObjectName.setText(orderModel.getMerchant());
             tvObjectAddress.setText(orderModel.getMerchantAddress().getFullAddress());
-            tvPrice.setText(getResources().getString(R.string.pay_money)
-                    + AppUtil.convertCurrency(orderModel.getSubTotal()));
 
             btnPhone.setOnClickListener(v -> {
                 Uri number = Uri.parse("tel:" + orderModel.getMerchantPhone());
                 Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
                 startActivity(callIntent);
             });
+
+            int subTotal = orderModel.getSubTotal();
+            if (orderModel.getPayment() != 0) {
+                if (orderModel.hasMerchantTool()) {
+                    subTotal = 0;
+                }
+            }
+
+            tvPrice.setText(getResources().getString(R.string.pay_money)
+                    + AppUtil.convertCurrency(subTotal));
         } else {
             tvObjectName.setText(orderModel.getCustomer());
             tvObjectAddress.setText(orderModel.getCustomerAddress().getFullAddress());
-            tvPrice.setText(getResources().getString(R.string.get_order)
-                    + AppUtil.convertCurrency(orderModel.getTotal()));
 
             btnPhone.setOnClickListener(v -> {
                 Uri number = Uri.parse("tel:" + orderModel.getCustomerPhone());
                 Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
                 startActivity(callIntent);
             });
+
+            int total = orderModel.getTotal();
+            if (orderModel.getPayment() != 0) {
+                total = 0;
+            }
+
+            tvPrice.setText(getResources().getString(R.string.get_order)
+                    + AppUtil.convertCurrency(total));
         }
 
         for (int i = 0; i < orderModel.getDishOrderList().size(); i++) {

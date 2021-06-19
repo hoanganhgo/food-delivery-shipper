@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.adapters.DetailPagerAdapter;
+import com.hcmus.fit.shipper.models.ChatManager;
 import com.hcmus.fit.shipper.models.OrderManager;
 import com.hcmus.fit.shipper.models.OrderModel;
 import com.hcmus.fit.shipper.network.MySocket;
@@ -83,6 +84,7 @@ public class OrderActivity extends AppCompatActivity {
                     OrderManager.getInstance().notifyProcessAdapter();
                     OrderManager.getInstance().notifyCompleteAdapter();
                     orderModel.setStatus(4);
+                    ChatManager.getInstance().removeChatBox(position);
                     MySocket.delivered(orderModel.getOrderId());
                     onBackPressed();
                 }

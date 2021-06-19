@@ -2,21 +2,32 @@ package com.hcmus.fit.shipper.models;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
+import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hcmus.fit.shipper.MainActivity;
 import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.activities.OrderActivity;
 import com.hcmus.fit.shipper.network.MySocket;
 import com.hcmus.fit.shipper.util.AppUtil;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class OrderManager {
     private static OrderManager instance = null;
@@ -25,7 +36,7 @@ public class OrderManager {
     private final ArrayList<OrderModel> processList = new ArrayList<>();
     private final ArrayList<OrderModel> completeList = new ArrayList<>();
 
-    private Activity activity;
+    private MainActivity activity;
     private Dialog orderDialog;
     private BaseAdapter processAdapter;
     private BaseAdapter completeAdapter;
@@ -70,11 +81,11 @@ public class OrderManager {
         this.orderDialog = orderDialog;
     }
 
-    public void setActivity(Activity activity) {
+    public void setActivity(MainActivity activity) {
         this.activity = activity;
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     public void showNewOrder(int timeOut) {
         if (orderDialog != null && newOrder != null && this.activity != null && !this.activity.isDestroyed()) {
             ImageButton btnCancel = orderDialog.findViewById(R.id.btn_cancel);
@@ -90,15 +101,39 @@ public class OrderManager {
 
             tvDistance.setText(newOrder.getDistance() + " Km");
             tvPrice.setText(AppUtil.convertCurrency(newOrder.getTotal()));
+
+            int subTotal = newOrder.getSubTotal();
+            int total = newOrder.getTotal();
+            if (newOrder.getPayment() != 0) {
+                if (newOrder.hasMerchantTool()) {
+                    subTotal = 0;
+                }
+
+                total = 0;
+            }
+
             tvMerchant.setText(orderDialog.getContext().getResources().getString(R.string.get_order) + newOrder.getMerchant());
-            tvPayMerchant.setText(orderDialog.getContext().getResources().getString(R.string.pay_money) + AppUtil.convertCurrency(newOrder.getSubTotal()));
+            tvPayMerchant.setText(orderDialog.getContext().getResources().getString(R.string.pay_money)
+                    + AppUtil.convertCurrency(subTotal));
             tvCustomer.setText(orderDialog.getContext().getResources().getString(R.string.ship_order) + newOrder.getCustomer());
-            tvReceiveCustomer.setText(orderDialog.getContext().getResources().getString(R.string.receive_money) + AppUtil.convertCurrency(newOrder.getTotal()));
+            tvReceiveCustomer.setText(orderDialog.getContext().getResources().getString(R.string.receive_money) + AppUtil.convertCurrency(total));
 
             btnCancel.setOnClickListener(v2 -> {
                 MySocket.skipOrder(newOrder.getOrderId());
                 orderDialog.dismiss();
             });
+
+            ScheduledExecutorService countDownService = Executors.newSingleThreadScheduledExecutor();
+            AtomicInteger countDown = new AtomicInteger(timeOut / 1000);
+            countDownService.scheduleAtFixedRate(() -> {
+                this.activity.runOnUiThread(() -> tvCountDown.setText(String.valueOf(countDown.get())));
+                countDown.getAndDecrement();
+
+                if (countDown.get() <= 0) {
+                    orderDialog.dismiss();
+                    countDownService.shutdown();
+                }
+            },0, 1, TimeUnit.SECONDS);
 
             //Drag Button
             btnDrag.setOnTouchListener((view, event) -> {
@@ -121,9 +156,11 @@ public class OrderManager {
                     if (x > maxWidth) {
                         OrderManager.getInstance().getProcessList().add(0, newOrder);
                         MySocket.confirmOrder(newOrder.getOrderId());
+
                         newOrder.setStatus(2);
                         notifyProcessAdapter();
                         orderDialog.dismiss();
+                        countDownService.shutdown();
 
                         Intent intent = new Intent(this.activity, OrderActivity.class);
                         intent.putExtra("position", 0);
@@ -141,22 +178,6 @@ public class OrderManager {
             });
 
             this.activity.runOnUiThread(() -> orderDialog.show());
-
-            try {
-                int loop = timeOut / 1000;
-                for (int i = loop; i >= 0; i--) {
-                    int countDown = i;
-                    this.activity.runOnUiThread(() -> tvCountDown.setText(String.valueOf(countDown)));
-                    Thread.sleep(1000);
-                }
-
-                if (newOrder.getStatus() == 0) {
-                    MySocket.skipOrder(newOrder.getOrderId());
-                    orderDialog.dismiss();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 

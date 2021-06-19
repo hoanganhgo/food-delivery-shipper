@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_bg">
 
     <RelativeLayout
         android:id="@+id/rl_title"
@@ -9,6 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
+        android:background="@color/white"
         android:padding="5dp">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_title_avatar"
@@ -44,7 +47,7 @@
         android:layout_below="@+id/rl_title"
         android:layout_above="@+id/rl_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="none"
         android:transcriptMode="alwaysScroll"
         android:divider="@color/grey_bg"
@@ -56,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/white"
         android:padding="5dp">
         <EditText
             android:id="@+id/edt_message"

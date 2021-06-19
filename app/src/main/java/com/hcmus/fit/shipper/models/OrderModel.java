@@ -18,6 +18,7 @@ public class OrderModel {
     private Address merchantAddress;
     private String merchantPhone;
 
+    private String customerId;
     private String customer;
     private int customerTime;
     private Address customerAddress;
@@ -28,6 +29,8 @@ public class OrderModel {
     private double distance;
     private long completeAt;
     private int status = 0;
+    private boolean merchantTool;
+    private int payment;
 
     public OrderModel() {
 
@@ -63,6 +66,14 @@ public class OrderModel {
 
     public void setMerchantTime(int merchantTime) {
         this.merchantTime = merchantTime;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getCustomer() {
@@ -159,6 +170,22 @@ public class OrderModel {
 
     public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
+    }
+
+    public boolean hasMerchantTool() {
+        return merchantTool;
+    }
+
+    public void setMerchantTool(boolean merchantTool) {
+        this.merchantTool = merchantTool;
+    }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
     }
 
     public ArrayList<DishOrder> getDishOrderList() {

@@ -14,12 +14,6 @@ public class NotifyManager {
     public static NotifyManager getInstance() {
         if (instance == null) {
             instance = new NotifyManager();
-
-            NotifyModel notifyModel = new NotifyModel("", "","");
-            instance.addNotifyModel(notifyModel);
-            instance.addNotifyModel(notifyModel);
-            instance.addNotifyModel(notifyModel);
-            instance.addNotifyModel(notifyModel);
         }
 
         return instance;

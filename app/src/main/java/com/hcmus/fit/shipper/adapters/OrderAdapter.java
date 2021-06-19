@@ -67,16 +67,27 @@ public class OrderAdapter extends BaseAdapter {
 
         holder.tvOrderCode.setText("#" + orderModel.getOrderId());
         holder.tvPrice.setText(AppUtil.convertCurrency(orderModel.getTotal()));
+
+        int subTotal = orderModel.getSubTotal();
+        int total = orderModel.getTotal();
+        if (orderModel.getPayment() != 0) {
+            if (orderModel.hasMerchantTool()) {
+                subTotal = 0;
+            }
+
+            total = 0;
+        }
+
         holder.tvPoint.setText(orderModel.getPoint() + convertView.getResources().getString(R.string.point));
         holder.tvMerchant.setText(convertView.getResources().getString(R.string.get_order)
                 + orderModel.getMerchant());
         holder.tvPayMerchant.setText(convertView.getResources().getString(R.string.pay_money)
-                + AppUtil.roundCurrency(orderModel.getSubTotal()));
+                + AppUtil.roundCurrency(subTotal));
         holder.tvTimeGetOrder.setText(convertView.getResources().getString(R.string.get_now));
         holder.tvCustomer.setText(convertView.getResources().getString(R.string.ship_order)
                 + orderModel.getCustomer());
         holder.tvReceiveCustomer.setText(convertView.getResources().getString(R.string.receive_money)
-                + AppUtil.roundCurrency(orderModel.getTotal()));
+                + AppUtil.roundCurrency(total));
         holder.tvTimeShip.setText(convertView.getResources().getString(R.string.ship_now));
         holder.tvDistance.setText(orderModel.getDistance() + " km");
         holder.tvCompleteAt.setText(convertView.getResources().getString(R.string.schedule_ship)

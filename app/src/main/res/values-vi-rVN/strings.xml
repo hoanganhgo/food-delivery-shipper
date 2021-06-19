@@ -43,4 +43,9 @@
     <string name="options">Tuỳ chọn thêm:</string>
     <string name="notification">Thông báo</string>
     <string name="enter_message">Nhập tin nhắn...</string>
+    <string name="check_in">Bắt đầu ngày làm việc</string>
+    <string name="your_location">Vị trí hiện tại của bạn</string>
+    <string name="cancel">Huỷ bỏ</string>
+    <string name="location_off">Bạn chưa bật vị trí</string>
+    <string name="check_out">Kết thúc ngày làm việc</string>
 </resources>

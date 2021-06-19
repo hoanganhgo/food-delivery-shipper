@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_check_in_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/check_in"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_medium" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_location"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/grey_light"
+        android:fontFamily="@font/roboto_medium" />
+
+    <TextView
+        android:id="@+id/tv_your_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_medium" />
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_cancel"
+            android:text="@string/cancel"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_alignParentStart="true"/>
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_green"
+            android:text="@string/confirm"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

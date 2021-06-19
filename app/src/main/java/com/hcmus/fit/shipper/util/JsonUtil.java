@@ -17,8 +17,8 @@ public class JsonUtil {
 
         JSONObject locationJson = merchant.getJSONObject("Location");
         JSONArray coordinates = locationJson.getJSONArray("coordinates");
-        double latitude = coordinates.getDouble(0);
-        double longitude = coordinates.getDouble(1);
+        double latitude = coordinates.getDouble(1);
+        double longitude = coordinates.getDouble(0);
 
         return new Address(fullAddress, latitude, longitude);
     }

@@ -8,29 +8,28 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.hcmus.fit.shipper.R;
+import com.hcmus.fit.shipper.models.ChatBox;
 import com.hcmus.fit.shipper.models.ChatModel;
-
-import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageAdapter extends BaseAdapter {
     private final LayoutInflater layoutInflater;
-    private ArrayList<ChatModel> chatList;
+    private final ChatBox chatBox;
 
-    public MessageAdapter(Context context, ArrayList<ChatModel> chatList) {
+    public MessageAdapter(Context context, ChatBox chatBox) {
         this.layoutInflater = LayoutInflater.from(context);
-        this.chatList = chatList;
+        this.chatBox = chatBox;
     }
 
     @Override
     public int getCount() {
-        return chatList.size();
+        return chatBox.getChatListSize();
     }
 
     @Override
     public Object getItem(int position) {
-        return chatList.get(position);
+        return chatBox.getChatIndex(position);
     }
 
     @Override
@@ -51,6 +50,22 @@ public class MessageAdapter extends BaseAdapter {
             convertView.setTag(holder);
         } else {
             holder = (MyViewHolder) convertView.getTag();
+        }
+
+        ChatModel chatModel = chatBox.getChatIndex(position);
+        if (chatModel.isMyself()) {
+            holder.ivUserAvatar.setVisibility(View.GONE);
+            holder.tvUserMessage.setVisibility(View.GONE);
+            holder.tvMyMessage.setVisibility(View.VISIBLE);
+
+            holder.tvMyMessage.setText(chatModel.getContent());
+        } else {
+            holder.ivUserAvatar.setVisibility(View.VISIBLE);
+            holder.tvUserMessage.setVisibility(View.VISIBLE);
+            holder.tvMyMessage.setVisibility(View.GONE);
+
+            holder.ivUserAvatar.setImageBitmap(chatBox.getAvatar());
+            holder.tvUserMessage.setText(chatModel.getContent());
         }
 
         return convertView;

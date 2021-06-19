@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.hcmus.fit.shipper.R;
+import com.hcmus.fit.shipper.models.ChatBox;
 import com.hcmus.fit.shipper.models.ChatManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -48,6 +49,11 @@ public class ChatBoxAdapter extends BaseAdapter {
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
+
+        ChatBox chatBox = ChatManager.getInstance().getChatBox(position);
+        holder.ivAvatar.setImageBitmap(chatBox.getAvatar());
+        holder.tvUserName.setText(chatBox.getUserName());
+        holder.tvLastMessage.setText(chatBox.getLastMessage());
 
         return convertView;
     }

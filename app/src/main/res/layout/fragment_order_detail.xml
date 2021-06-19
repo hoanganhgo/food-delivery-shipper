@@ -117,19 +117,5 @@
             android:background="@drawable/bg_btn_grey"
             android:drawablePadding="5dp"
             android:drawableTop="@drawable/ic_message_circle"/>
-        <Button
-            android:id="@+id/btn_refuse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_weight="0.25"
-            android:text="@string/refuse"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto_medium"
-            android:background="@drawable/bg_btn_grey"
-            android:drawablePadding="5dp"
-            android:drawableTop="@drawable/ic_cancel"/>
     </LinearLayout>
 </RelativeLayout>

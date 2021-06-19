@@ -43,4 +43,9 @@
     <string name="options">Options:</string>
     <string name="notification">Notification</string>
     <string name="enter_message">Enter your message...</string>
+    <string name="check_in">Check in today</string>
+    <string name="your_location">Your current location</string>
+    <string name="cancel">Cancel</string>
+    <string name="location_off">You have not turned on GPS</string>
+    <string name="check_out">Check out today</string>
 </resources>
