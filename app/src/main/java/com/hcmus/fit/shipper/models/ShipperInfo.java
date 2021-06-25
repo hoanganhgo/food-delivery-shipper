@@ -50,7 +50,7 @@ public class ShipperInfo {
     }
 
     public String getToken() {
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjdhMmZjNTM4MzQ2MzRjNjEzMzJiMyIsImV4cCI6MTY1MzgxNTUyMy4wNjMsInJvbGUiOiJzaGlwcGVyIiwiaWF0IjoxNjIyMDQxNzY3fQ.IUxWgD1vcSLLKAEph1sotwwi00Adis3aNU60b2F9y3Q";
+        return this.token;
     }
 
     public void setPhoneNumber(String phoneNumber) {
