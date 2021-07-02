@@ -48,4 +48,15 @@
     <string name="cancel">Cancel</string>
     <string name="location_off">You have not turned on GPS</string>
     <string name="check_out">Check out today</string>
+    <string name="account_balance">Account balance</string>
+    <string name="submit_money">Submit a withdrawal request</string>
+    <string name="max_order">Maximum orders</string>
+    <string name="max_distance">Maximum distance</string>
+    <string name="max_money">The maximum amount</string>
+    <string name="with_draws">With draws</string>
+    <string name="processing">Processing...</string>
+    <string name="modify_max_order_success">Modify maximum order success</string>
+    <string name="modify_max_distance_success">Modify maximum distance success</string>
+    <string name="modify_max_amount_success">Modify maximum amount success</string>
+    <string name="notify_not_enough_money">You have not enough money</string>
 </resources>

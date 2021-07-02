@@ -34,7 +34,6 @@ public class MySocket {
         if (instance == null) {
             try {
                 instance = IO.socket(API.SERVER_SOCKET);
-//                instance = IO.socket("https://87e83c19d91f.ngrok.io");
 
                 instance.on(EventConstant.CONNECT, onAuthenticate);
                 instance.on(EventConstant.RESPONSE_CHANGE_STATUS_ROOM, statusRoom);
@@ -168,7 +167,7 @@ public class MySocket {
 
     public static void updateCoor(double latitude, double longitude) {
         JSONObject json = new JSONObject();
-        Log.d("socket", "Update location --->>");
+//        Log.d("socket", "Update location --->>");
         try {
             JSONObject coorJson = new JSONObject();
             coorJson.put("lat", latitude);

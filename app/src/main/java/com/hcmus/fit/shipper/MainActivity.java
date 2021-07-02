@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
+        Log.d("token", ShipperInfo.getInstance().getToken());
         SignInNetwork.getUserInfo(this);
         MySocket.getInstance();
         OrderManager.getInstance().setActivity(this);

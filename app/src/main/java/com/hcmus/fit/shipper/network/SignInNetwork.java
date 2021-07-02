@@ -113,7 +113,7 @@ public class SignInNetwork {
 
         StringRequest req = new StringRequest(Request.Method.GET, query,
                 response -> {
-                    Log.d("userInfo", response);
+                    Log.d("ShipperInfo", response);
                     JSONObject json = null;
                     try {
                         json = new JSONObject(response);
@@ -121,11 +121,20 @@ public class SignInNetwork {
 
                         if (error == 0) {
                             JSONObject data = json.getJSONObject("data");
-                            JSONObject user = data.getJSONObject("user");
-                            String id = user.getString("id");
-                            String phone = user.getString("Phone");
+                            String id = data.getString("id");
+                            String phone = data.getString("Phone");
+                            String fullName = data.getString("FullName");
+                            String email = data.getString("Email");
+                            String avatarUrl = data.getString("Avatar");
+                            int wallet = data.getInt("Wallet");
+                            JSONObject settingJson = data.getJSONObject("Setting");
                             ShipperInfo.getInstance().setId(id);
                             ShipperInfo.getInstance().setPhoneNumber(phone);
+                            ShipperInfo.getInstance().setFullName(fullName);
+                            ShipperInfo.getInstance().setEmail(email);
+                            ShipperInfo.getInstance().setAvatar(avatarUrl);
+                            ShipperInfo.getInstance().setWallet(wallet);
+                            ShipperInfo.getInstance().setSetting(settingJson);
                         }
 
                     } catch (JSONException e) {
@@ -133,7 +142,7 @@ public class SignInNetwork {
                     }
 
                 },
-                error -> Log.d("userInfo", error.getMessage()))
+                error -> Log.d("ShipperInfo", error.getMessage()))
         {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -146,5 +155,47 @@ public class SignInNetwork {
 
         queue.add(req);
     }
+
+    public static void getUserWallet(Context context) {
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        Map<String, String> params = new HashMap<>();
+        String userId = JWTUtils.getUserIdFromToken(ShipperInfo.getInstance().getToken());
+        params.put("id", userId);
+        String query = QueryUtil.createQuery(API.GET_USER_INFO, params);
+
+        StringRequest req = new StringRequest(Request.Method.GET, query,
+                response -> {
+                    Log.d("ShipperInfo", response);
+                    JSONObject json = null;
+                    try {
+                        json = new JSONObject(response);
+                        int error = json.getInt("errorCode");
+
+                        if (error == 0) {
+                            JSONObject data = json.getJSONObject("data");
+                            int wallet = data.getInt("Wallet");
+                            ShipperInfo.getInstance().setWallet(wallet);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                },
+                error -> Log.d("ShipperInfo", error.getMessage()))
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json; charset=UTF-8");
+                params.put("Authorization", "Bearer " + ShipperInfo.getInstance().getToken());
+                return params;
+            }
+        };
+
+        queue.add(req);
+    }
+
 
 }

@@ -1,17 +1,24 @@
 package com.hcmus.fit.shipper.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ShipperInfo {
     private static ShipperInfo instance = null;
 
     private String id = "";
-    private String firstName = "";
-    private String lastName = "";
+    private String fullName = "";
     private String phoneNumber = "0123456789";
     private String email = "";
     private String avatar = "";
     private String token = "";
     private double latitude;
     private double longitude;
+    private int wallet;
+    public boolean processWithDraw = false;
+    private int maxOrder;
+    private int maxDistance;
+    private int maxAmount;
     private boolean active = false;
 
     private ShipperInfo() {
@@ -29,12 +36,12 @@ public class ShipperInfo {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhoneNumber() {
@@ -63,14 +70,6 @@ public class ShipperInfo {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public void setEmail(String email) {
@@ -103,6 +102,48 @@ public class ShipperInfo {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
+    }
+
+    public void spendWallet(int money) {
+        this.wallet -= money;
+    }
+
+    public void setSetting(JSONObject settingJson) throws JSONException {
+        this.maxOrder = settingJson.getInt("MaxOrder");
+        this.maxDistance = settingJson.getInt("MaxDistance");
+        this.maxAmount = settingJson.getInt("MaxAmount");
+    }
+
+    public int getMaxOrder() {
+        return maxOrder;
+    }
+
+    public int getMaxDistance() {
+        return maxDistance;
+    }
+
+    public int getMaxAmount() {
+        return maxAmount;
+    }
+
+    public void setMaxOrder(int maxOrder) {
+        this.maxOrder = maxOrder;
+    }
+
+    public void setMaxDistance(int maxDistance) {
+        this.maxDistance = maxDistance;
+    }
+
+    public void setMaxAmount(int maxAmount) {
+        this.maxAmount = maxAmount;
     }
 
     public void clear() {

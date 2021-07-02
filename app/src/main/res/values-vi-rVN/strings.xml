@@ -49,4 +49,15 @@
     <string name="location_off">Bạn chưa bật vị trí</string>
     <string name="check_out">Kết thúc ngày làm việc</string>
     <string name="app_name">Tài xế</string>
+    <string name="account_balance">Số dư tài khoản</string>
+    <string name="submit_money">Gửi yêu cầu rút tiền</string>
+    <string name="max_order">Số đơn tối đa</string>
+    <string name="max_distance">Khoảng cách tối đa</string>
+    <string name="max_money">Số tiền tối đa</string>
+    <string name="with_draws">Rút tiền</string>
+    <string name="processing">Đang xử lý...</string>
+    <string name="modify_max_order_success">Thay đổi số đơn tối đa thành công</string>
+    <string name="modify_max_distance_success">Thay đổi khoảng cách tối đa thành công</string>
+    <string name="modify_max_amount_success">Thay đổi số tiền tối đa thành công</string>
+    <string name="notify_not_enough_money">Số dư của bạn không đủ</string>
 </resources>
