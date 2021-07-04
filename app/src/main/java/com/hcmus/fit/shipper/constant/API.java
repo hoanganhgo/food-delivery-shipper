@@ -17,4 +17,5 @@ public class API {
     public static final String GET_USER_INFO = SERVER + "/shippers/{id}";
     public static final String UPDATE_SETTING = SERVER + "/shippers/{id}/setting";
     public static final String WITH_DRAWS = SERVER + "/withdraws";
+    public static final String GET_INCOME = SERVER + "/shippers/{shipperId}/statistics?montha={montha}&monthb={monthb}&daya={daya}";
 }

@@ -111,7 +111,13 @@ public class ProfileNetwork {
                         e.printStackTrace();
                     }
                 },
-                error -> Log.d("get with draw", error.getMessage()))
+                error -> {
+                try {
+                    Log.d("get with draw", error.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                })
         {
 
             @Override

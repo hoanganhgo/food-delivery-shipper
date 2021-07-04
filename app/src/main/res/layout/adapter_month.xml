@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="35dp"
+    android:padding="3dp"
+    android:background="@drawable/bg_border_grey">
+
+    <Button
+        android:id="@+id/btn_month"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/transparent"/>
+
+    <TextView
+        android:id="@+id/tv_month"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="3dp"
+        android:textAlignment="center"
+        android:text="Jan"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/black"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

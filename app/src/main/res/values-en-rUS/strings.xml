@@ -60,4 +60,21 @@
     <string name="modify_max_distance_success">Modify maximum distance success</string>
     <string name="modify_max_amount_success">Modify maximum amount success</string>
     <string name="notify_not_enough_money">You have not enough money</string>
+    <string name="month_01">Jan</string>
+    <string name="month_02">Feb</string>
+    <string name="month_03">Mar</string>
+    <string name="month_04">Apr</string>
+    <string name="month_05">May</string>
+    <string name="month_06">Jun</string>
+    <string name="month_07">Jul</string>
+    <string name="month_08">Aug</string>
+    <string name="month_09">Sep</string>
+    <string name="month_10">Oct</string>
+    <string name="month_11">Nov</string>
+    <string name="month_12">Dec</string>
+    <string name="monthly_income">Monthly income</string>
+    <string name="total_orders">Total orders</string>
+    <string name="orders">orders</string>
+    <string name="total_value_orders">Total value of orders</string>
+    <string name="notify_exit">Press back again to exit</string>
 </resources>

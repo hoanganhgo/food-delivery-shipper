@@ -60,4 +60,21 @@
     <string name="modify_max_distance_success">Thay đổi khoảng cách tối đa thành công</string>
     <string name="modify_max_amount_success">Thay đổi số tiền tối đa thành công</string>
     <string name="notify_not_enough_money">Số dư của bạn không đủ</string>
+    <string name="month_01">Th. 1</string>
+    <string name="month_02">Th. 2</string>
+    <string name="month_03">Th. 3</string>
+    <string name="month_04">Th. 4</string>
+    <string name="month_05">Th. 5</string>
+    <string name="month_06">Th. 6</string>
+    <string name="month_07">Th. 7</string>
+    <string name="month_08">Th. 8</string>
+    <string name="month_09">Th. 9</string>
+    <string name="month_10">Th. 10</string>
+    <string name="month_11">Th. 11</string>
+    <string name="month_12">Th. 12</string>
+    <string name="monthly_income">Thu nhập trong tháng</string>
+    <string name="total_orders">Tổng số đơn hàng</string>
+    <string name="orders">đơn hàng</string>
+    <string name="total_value_orders">Tổng giá trị các đơn hàng</string>
+    <string name="notify_exit">Nhấn trở về lần nữa để thoát</string>
 </resources>

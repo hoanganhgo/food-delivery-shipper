@@ -142,7 +142,13 @@ public class SignInNetwork {
                     }
 
                 },
-                error -> Log.d("ShipperInfo", error.getMessage()))
+                error -> {
+                    try {
+                        Log.d("ShipperInfo", error.getMessage());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                })
         {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -160,8 +166,7 @@ public class SignInNetwork {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         Map<String, String> params = new HashMap<>();
-        String userId = JWTUtils.getUserIdFromToken(ShipperInfo.getInstance().getToken());
-        params.put("id", userId);
+        params.put("id", ShipperInfo.getInstance().getId());
         String query = QueryUtil.createQuery(API.GET_USER_INFO, params);
 
         StringRequest req = new StringRequest(Request.Method.GET, query,
@@ -183,7 +188,13 @@ public class SignInNetwork {
                     }
 
                 },
-                error -> Log.d("ShipperInfo", error.getMessage()))
+                error -> {
+                try {
+                    Log.d("ShipperInfo", error.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                })
         {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

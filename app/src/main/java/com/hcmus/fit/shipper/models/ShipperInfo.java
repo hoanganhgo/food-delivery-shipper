@@ -57,7 +57,9 @@ public class ShipperInfo {
     }
 
     public String getToken() {
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjdhMmZjNTM4MzQ2MzRjNjEzMzJiMyIsImV4cCI6MTY1MzgxNTUyMy4wNjMsInJvbGUiOiJzaGlwcGVyIiwiaWF0IjoxNjIyMDQxNzY3fQ.IUxWgD1vcSLLKAEph1sotwwi00Adis3aNU60b2F9y3Q";
+        //return token;
+
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjdhMmZjNTM4MzQ2MzRjNjEzMzJiMyIsInJvbGUiOiJzaGlwcGVyIiwiaWF0IjoxNjI1MjE0MjczLCJleHAiOjE2MjU4MTkwNzN9.g22qRv1UvWddipVAFWVh6botzUsfJaNA9KWS-wyuB-0";
     }
 
     public void setPhoneNumber(String phoneNumber) {

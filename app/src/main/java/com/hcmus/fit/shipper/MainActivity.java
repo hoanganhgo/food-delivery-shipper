@@ -4,15 +4,13 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.PixelFormat;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     //permission
     private static final int MY_PERMISSIONS_REQUEST_COARSE_LOCATION = 124;
     private static final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 123;
+
+    private long pressBackTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,5 +151,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     @Override
     public void onProviderDisabled(@NonNull String provider) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - pressBackTime > Constant.TIME_EXIT) {
+            Toast.makeText(this, getResources().getString(R.string.notify_exit), Toast.LENGTH_SHORT).show();
+            pressBackTime = System.currentTimeMillis();
+        } else {
+            finishAffinity();
+        }
     }
 }
