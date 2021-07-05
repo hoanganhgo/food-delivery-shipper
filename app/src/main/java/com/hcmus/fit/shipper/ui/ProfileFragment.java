@@ -1,8 +1,6 @@
 package com.hcmus.fit.shipper.ui;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -25,11 +23,8 @@ import com.hcmus.fit.shipper.models.ShipperInfo;
 import com.hcmus.fit.shipper.network.ProfileNetwork;
 import com.hcmus.fit.shipper.network.SignInNetwork;
 import com.hcmus.fit.shipper.util.AppUtil;
+import com.hcmus.fit.shipper.util.StorageUtil;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -105,6 +100,14 @@ public class ProfileFragment extends Fragment {
             }
 
             showPopup(R.string.with_draws);
+        });
+
+        btnLogout.setOnClickListener(v -> {
+            Log.d("logout", "Sign out shipper success");
+            ShipperInfo.getInstance().clear();
+            StorageUtil.deleteKey(getContext(), StorageUtil.TOKEN_KEY);
+            getActivity().finish();
+            Toast.makeText(getActivity(), R.string.notify_sign_out,Toast.LENGTH_LONG).show();
         });
 
         return root;

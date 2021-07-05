@@ -1,27 +1,17 @@
 package com.hcmus.fit.shipper.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -29,8 +19,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.adapters.OrderPagerAdapter;
-import com.hcmus.fit.shipper.models.OrderManager;
-import com.hcmus.fit.shipper.models.OrderModel;
 import com.hcmus.fit.shipper.models.ShipperInfo;
 import com.hcmus.fit.shipper.network.MySocket;
 

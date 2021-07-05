@@ -1,16 +1,10 @@
 package com.hcmus.fit.shipper.models;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.PixelFormat;
-import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -23,7 +17,6 @@ import com.hcmus.fit.shipper.network.MySocket;
 import com.hcmus.fit.shipper.util.AppUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

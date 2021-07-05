@@ -76,4 +76,5 @@
     <string name="orders">orders</string>
     <string name="total_value_orders">Total value of orders</string>
     <string name="notify_exit">Press back again to exit</string>
+    <string name="notify_sign_out">Sign out success</string>
 </resources>

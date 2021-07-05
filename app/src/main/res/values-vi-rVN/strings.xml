@@ -77,4 +77,5 @@
     <string name="orders">đơn hàng</string>
     <string name="total_value_orders">Tổng giá trị các đơn hàng</string>
     <string name="notify_exit">Nhấn trở về lần nữa để thoát</string>
+    <string name="notify_sign_out">Đăng xuất thành công</string>
 </resources>

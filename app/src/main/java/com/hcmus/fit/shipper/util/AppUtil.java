@@ -9,8 +9,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AppUtil {
     public static Calendar parseCalendar(String s) {
@@ -90,15 +88,4 @@ public class AppUtil {
 
         return output;
     }
-
-//    public static Map<String, String> getTimeIncome(int month) {
-//        Map<String, String> params = new HashMap<>();
-//        int monthA = 1;
-//        int monthB = 1;
-//
-//        switch (month) {
-//            case 1:
-//                mon
-//        }
-//    }
 }

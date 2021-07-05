@@ -17,7 +17,6 @@ import com.hcmus.fit.shipper.adapters.OrderAdapter;
 import com.hcmus.fit.shipper.models.OrderManager;
 import com.hcmus.fit.shipper.models.OrderModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

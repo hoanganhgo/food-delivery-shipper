@@ -12,13 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.adapters.MessageAdapter;
-import com.hcmus.fit.shipper.adapters.NotificationAdapter;
 import com.hcmus.fit.shipper.models.ChatBox;
 import com.hcmus.fit.shipper.models.ChatManager;
 import com.hcmus.fit.shipper.models.ChatModel;
-import com.hcmus.fit.shipper.network.MySocket;
-
-import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

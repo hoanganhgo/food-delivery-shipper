@@ -2,13 +2,11 @@ package com.hcmus.fit.shipper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,7 +15,6 @@ import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.activities.ChatActivity;
 import com.hcmus.fit.shipper.adapters.ChatBoxAdapter;
 import com.hcmus.fit.shipper.models.ChatManager;
-import com.hcmus.fit.shipper.models.ChatModel;
 
 public class MessageFragment extends Fragment {
 

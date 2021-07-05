@@ -1,6 +1,5 @@
 package com.hcmus.fit.shipper.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,12 +19,9 @@ import com.hcmus.fit.shipper.R;
 import com.hcmus.fit.shipper.activities.ChatActivity;
 import com.hcmus.fit.shipper.models.Address;
 import com.hcmus.fit.shipper.models.DishOrder;
-import com.hcmus.fit.shipper.models.OrderManager;
 import com.hcmus.fit.shipper.models.OrderModel;
 import com.hcmus.fit.shipper.models.ShipperInfo;
 import com.hcmus.fit.shipper.util.AppUtil;
-
-import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
